@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>LISTA DE TAREFAS</title>
+</head>
+<body>
+    <h1>LISTA DE TAREFAS</h1>
+    <main>
+        <form onsubmit="EnviaForm(event)">
+            <input type="text" placeholder="Digite sua tarefa" id="inputTarefa">
+            <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+        </form>
+        <div class="container-tarefas">
+        </div>
+    </main>
+    <section class="modal">
+        <section class="modal-content">
+            <span class="material-symbols-outlined" id="icon-modal">block</span>
+            <p id="texto-modal"></p>
+        </section>
+    </section>
+    <section class="modalEditarTarefa">
+        <section class="modal-conteudo">
+            <h1>Editar Tarefa</h1>
+            <input type="text" placeholder="Digite sua tarefa..." required id="inputEditarTarefa">
+            <p></p>
+            <button type="button" id="btnEditarTarefa">EDITAR</button>
+        </section>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+</html>
