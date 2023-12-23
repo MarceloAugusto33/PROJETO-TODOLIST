@@ -105,7 +105,7 @@ function mostrarTarefas() {
     container.innerHTML = ""
     for (let index = 0; index <= localStorage.length; index++) {
         let ChaveTarefa = localStorage.key(index);
-        if (!ChaveTarefa || ChaveTarefa == 'href' || !'TAREFA'.includes(ChaveTarefa)) {
+        if (!ChaveTarefa || ChaveTarefa == 'href' || !ChaveTarefa.includes('TAREFA')) {
             console.log('Chaves que não Sao tarefas: ' + ChaveTarefa)
         } else {
             ChaveTarefa.toLocaleUpperCase();
