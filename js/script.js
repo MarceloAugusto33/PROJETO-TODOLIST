@@ -5,16 +5,16 @@ function adicionarTarefa() {
     let textoModal = document.querySelector('#texto-modal');
     let iconModal = document.querySelector('#icon-modal');
 
-    
-    if (!inputTarefa.value){
+
+    if (!inputTarefa.value) {
         modal.style.width = '100%'
         modal.style.backgroundColor = 'orange'
         textoModal.innerHTML = 'Tarefa Vazia'
         iconModal.innerHTML = 'block'
         setTimeout(() => {
             modal.style.width = '0'
-        },1000)
-    } else{
+        }, 1000)
+    } else {
         localStorage.setItem(`TAREFA${id}`, `${inputTarefa.value}`)
         iconModal.innerHTML = 'done'
         modal.style.width = '100%'
@@ -22,7 +22,7 @@ function adicionarTarefa() {
         textoModal.innerHTML = 'Tarefa Adicionada'
         setTimeout(() => {
             modal.style.width = '0'
-        },1200)
+        }, 1200)
         mostrarTarefas()
     }
     verificarTarefas()
@@ -40,7 +40,7 @@ function removerTarefa(id) {
     modal.style.backgroundColor = 'red'
     setTimeout(() => {
         modal.style.width = '0'
-    },1000)
+    }, 1000)
     tarefa.remove()
     localStorage.removeItem(id)
     verificarTarefas()
@@ -51,11 +51,11 @@ function completarTarefa(id) {
     let paragrafo = tarefa.querySelector('p')
     let icon = tarefa.querySelector('.completo')
 
-    if (tarefa.classList.contains('concluido')){
+    if (tarefa.classList.contains('concluido')) {
         tarefa.classList.remove('concluido')
         paragrafo.classList.remove('linha')
         icon.innerHTML = 'trip_origin'
-    } else{
+    } else {
         tarefa.classList.add('concluido')
         paragrafo.classList.add('linha')
         icon.innerHTML = 'check_circle'
@@ -68,29 +68,29 @@ function completarTarefa(id) {
         modal.style.backgroundColor = 'green'
         setTimeout(() => {
             modal.style.width = '0'
-        },1000)
+        }, 1000)
     }
     verificarTarefas()
-    
+
 }
 
-function verificarTarefas(){
+function verificarTarefas() {
     let tarefas = document.querySelectorAll('.card-tarefa')
-    if(tarefas.length == 0){
+    if (tarefas.length == 0) {
         document.querySelector('.container-tarefas').innerHTML = `<img src="img/undraw_to_do_list_re_9nt7.svg" alt="" id="img">`
         id = 1
-    } else{
+    } else {
         img = document.querySelector('#img');
-        if(!img){
+        if (!img) {
             return
-        } else{
+        } else {
             img.remove()
         }
         return
     }
 }
 
-function EnviaForm(e){
+function EnviaForm(e) {
     e.preventDefault()
 }
 
@@ -103,14 +103,14 @@ function mostrarTarefas() {
     let inputTarefa = document.querySelector('#inputTarefa');
     let container = document.querySelector('.container-tarefas')
     container.innerHTML = ""
-    for (let index = 0; index <= localStorage.length; index++){
+    for (let index = 0; index <= localStorage.length; index++) {
         let ChaveTarefa = localStorage.key(index);
-        if (!ChaveTarefa || ChaveTarefa == 'href'){
+        if (!ChaveTarefa || ChaveTarefa == 'href' || !'TAREFA'.includes(ChaveTarefa)) {
             console.log('Chaves que não Sao tarefas: ' + ChaveTarefa)
         } else {
             ChaveTarefa.toLocaleUpperCase();
             let Valor = localStorage.getItem(ChaveTarefa);
-            
+
             container.innerHTML += `
         
             <div class="card-tarefa" id="${ChaveTarefa}">
@@ -120,30 +120,30 @@ function mostrarTarefas() {
                 <span class="material-symbols-outlined delete"onclick="removerTarefa('${ChaveTarefa}')">delete</span>
             </div>
             `
-            id ++
+            id++
             inputTarefa.value = ""
         }
     }
 }
 
-function openModal(id){
+function openModal(id) {
     let editModal = document.querySelector('.modalEditarTarefa');
     let element = document.querySelector(`#${id}`)
     editModal.style.display = 'flex'
     let b = editModal.querySelector('button');
-    b.setAttribute('onclick',`edita(${id})`)
+    b.setAttribute('onclick', `edita(${id})`)
     editModal.querySelector('input').value = element.querySelector('p').innerHTML
 }
 
-function edita(id){
+function edita(id) {
     let editModal = document.querySelector('.modalEditarTarefa');
     let InputEdit = editModal.querySelector('input').value
     let paragrafoErro = editModal.querySelector('p');
 
-    if(!InputEdit){
+    if (!InputEdit) {
         paragrafoErro.innerHTML = "Tarefa Vazia ou Invalida"
         paragrafoErro.style.color = 'red'
-    } else{
+    } else {
         paragrafoErro.innerHTML = ""
         let idDoElemento = id.id
         localStorage.setItem(`${idDoElemento}`, InputEdit)
