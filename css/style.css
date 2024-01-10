@@ -1,38 +1,50 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-body{
+
+body {
     background-color: #54499e;
 }
-h1{
+
+h1 {
     text-align: center;
     margin: 30px 0px;
     color: white;
 }
-main{
+
+main {
     display: flex;
     flex-direction: column;
     max-width: 400px;
     align-items: center;
     margin: auto;
     padding: 1rem;
+    animation: showPage 0.7s ease-in-out;
 }
-form{
+
+form {
     width: 100%;
     display: flex;
 }
-form input{
+
+form input {
     width: 80%;
     padding: 1.2rem;
     border: none;
 }
-form input:focus{
+
+form input:focus form{
+    border: 10px solid red;
+}
+
+form input:focus {
     outline: none;
 }
-form button{
+
+form button {
     width: 20%;
     background-color: rgb(2, 186, 2);
     border: none;
@@ -40,20 +52,24 @@ form button{
     border-radius: 0px 5px 5px 0px;
     cursor: pointer;
 }
-img{
+
+img {
     width: 100%;
     margin: 30px 0px;
 }
-span{
+
+span {
     cursor: pointer;
 }
-.container-tarefas{
+
+.container-tarefas {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: 20px 0px;
 }
-.card-tarefa{
+
+.card-tarefa {
     width: 100%;
     display: flex;
     background-color: #333;
@@ -62,28 +78,35 @@ span{
     overflow: hidden;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.503);
     margin: 4px 0px;
+    animation: showCard 0.7s ease-in-out;
 }
+
 .card-tarefa p {
     width: 70%;
     margin: 20px 0px;
     word-wrap: break-word;
 }
-.card-tarefa span{
+
+.card-tarefa span {
     width: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.card-tarefa .delete{
+
+.card-tarefa .delete {
     background-color: red;
 }
-.concluido{
+
+.concluido {
     background-color: rgb(5, 192, 5);
 }
-.linha{
+
+.linha {
     text-decoration: line-through;
 }
-.modal{
+
+.modal {
     position: fixed;
     right: 0;
     top: 0;
@@ -93,13 +116,15 @@ span{
     color: white;
     transition: all 0.15s ease-in-out;
 }
-.modal-content{
+
+.modal-content {
     margin: 20px;
     display: flex;
     align-items: center;
     gap: 5%;
 }
-.modalEditarTarefa{
+
+.modalEditarTarefa {
     position: fixed;
     left: 0;
     top: 0;
@@ -111,7 +136,8 @@ span{
     align-items: center;
     justify-content: center;
 }
-.modal-conteudo{
+
+.modal-conteudo {
     width: 80%;
     background-color: white;
     color: #333;
@@ -120,17 +146,21 @@ span{
     display: flex;
     flex-direction: column;
 }
-.modal-conteudo h1{
+
+.modal-conteudo h1 {
     color: #333;
 }
-.modal-conteudo input{
+
+.modal-conteudo input {
     padding: 1rem;
     margin: 10px 0px;
 }
-.modal-conteudo input{
+
+.modal-conteudo input {
     outline: none;
 }
-.modal-conteudo button{
+
+.modal-conteudo button {
     height: 50px;
     background-color: rgb(78, 255, 47);
     border: none;
@@ -138,20 +168,43 @@ span{
     transition: all 0.4s;
     cursor: pointer;
 }
-.modal-conteudo button:hover{
+
+.modal-conteudo button:hover {
     background-color: rgb(24, 154, 2);
 }
-@media screen and (min-width:900px){
-    main{
+
+@media screen and (min-width:900px) {
+    main {
         max-width: 1000px;
     }
-    img{
+
+    img {
         width: 60%;
         margin: 50px auto;
     }
-    .modal-conteudo{
+
+    .modal-conteudo {
         width: 30%;
     }
 }
 
+@keyframes showPage {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
 
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes showCard {
+    0%{
+        transform: translateX(-100px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
